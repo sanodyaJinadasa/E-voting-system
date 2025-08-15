@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setElectionName</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #007bff;
+        }
+
+
+
+        #formContainer {
+
+            position: absolute;
+            left: 29.32%;
+            right: 29.32%;
+            top: 15%;
+            bottom: 10%;
+
+            background: #D9D9D9;
+            border: 1px solid #BAA8A8;
+            box-shadow: 10px 9px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+
+        }
+
+        #formContent {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 10%;
+            bottom: 2.31%;
+
+        }
+
+        #formHeading {
+
+            text-align: center;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 35px;
+            line-height: 58px;
+
+            color: #000000;
+
+        }
+
+        #submitButton {
+
+            position: absolute;
+            left: 75%;
+            right: 0%;
+            bottom: 2%;
+
+            background: #34FF9D;
+            border: 1px solid #000000;
+            border-radius: 7px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <div id="formContainer">
+        <div id="formContent">
+            <p id="formHeading">Set Election Name</p>
+
+            <form method="post" action="/election_Name/">
+                {% csrf_token %}
+                <br>
+                <label class="form-label">
+                    <h3>Election Name :</h3>
+                </label>
+                <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="eName">
+
+                    <option selected value="Presidential Election" style="font-weight:bold;">Presidential Election
+                    </option>
+                    <option value="Parliamentary Election" style="font-weight:bold;">Parliamentary Election</option>
+                    <option value="Provincial Election" style="font-weight:bold;">Provincial Election</option>
+                    <option value="Local Authorities Election" style="font-weight:bold;">Local Authorities Election
+                    </option>
+                </select>
+                <label class="form-label">
+                    <h3>Election Year :</h3>
+                </label>
+                <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="eYear">
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="2031">2031</option>
+                    <option value="2032">2032</option>
+                    <option value="2033">2033</option>
+                    <option value="2034">2034</option>
+                    <option value="2035">2035</option>
+                    <option value="2036">2036</option>
+                    <option value="2037">2037</option>
+                    <option value="2038">2038</option>
+                    <option value="2039">2039</option>
+                    <option value="2040">2040</option>
+                    <option value="2041">2041</option>
+                    <option value="2042">2042</option>
+                    <option value="2043">2043</option>
+                    <option value="2044">2044</option>
+                    <option value="2045">2045</option>
+                    <option value="2046">2046</option>
+                    <option value="2047">2047</option>
+                    <option value="2048">2048</option>
+                    <option value="2049">2049</option>
+                    <option value="2050">2050</option>
+                </select>
+
+                <label class="form-label">
+                    <h3>Election Month :</h3>
+                </label>
+                <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="eMonth">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="Octomber">Octomber</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+
+                <br>
+                <button id="submitButton" type="submit" class="btn btn-warning">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

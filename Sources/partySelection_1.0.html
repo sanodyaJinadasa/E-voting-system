@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Political Party Selection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #007BFF;
+        }
+
+        #formContainer {
+
+            position: absolute;
+            left: 29.32%;
+            right: 29.32%;
+            top: 15%;
+            bottom: 15%;
+
+            background: #D9D9D9;
+            border: 1px solid #BAA8A8;
+            box-shadow: 10px 9px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+
+        }
+
+        #formHeading {
+
+            text-align: center;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 35px;
+            line-height: 58px;
+
+            color: #000000;
+
+        }
+
+        #submitButton {
+
+            position: absolute;
+            top: 90%;
+            bottom: 0%;
+            left: 75%;
+            right: 5%;
+
+            background: #34FF9D;
+            border: 1px solid #000000;
+            border-radius: 7px;
+
+        }
+
+        #submitButton:hover {
+            background-color: #00e174;
+        }
+
+        #cancleButton {
+
+            position: absolute;
+            top: 90%;
+            bottom: 0%;
+            left: 48%;
+            right: 30%;
+
+        }
+
+        #formContent {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 5%;
+            bottom: 2.31%;
+
+        }
+
+        #party1 {
+
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 15%;
+            bottom: 72%;
+
+            background: #820045;
+            border-radius: 7px;
+
+        }
+
+        #party2 {
+
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 30%;
+            bottom: 57%;
+
+            background: #1D1DC4;
+            border-radius: 7px;
+
+        }
+
+        #party3 {
+
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 45%;
+            bottom: 42%;
+
+            background: #EBCC00;
+            border-radius: 7px;
+
+        }
+
+        #party4 {
+
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 60%;
+            bottom: 27%;
+
+            background: #00BC00;
+            border-radius: 7px;
+
+        }
+
+        #party5 {
+
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 75%;
+            bottom: 12%;
+
+            background: #6B6469;
+            border-radius: 7px;
+
+
+        }
+
+        #partyLable {
+
+            position: absolute;
+            left: 15%;
+            top: 7%;
+            bottom: 0%;
+
+            font-family: 'Inter';
+            font-style: italic;
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 58px;
+
+            color: #FFFFFF;
+
+            text-shadow: 1px 1px solid #000000;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <div id="formContainer">
+        <form method="get" id="formContent" action="insertuser" onsubmit="return validateOtp();">
+            {% csrf_token %}
+            <div class="mb-3">
+                <p id="formHeading">Select Your Political Party</p>
+                {% for party in politicalParties %}
+                <div class="form-check" id="party1" style="background: {{party.Color}};">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="position: absolute;
+            left: 10%;top: 30%;bottom: 0%;">
+                    <label class="form-check-label" for="flexRadioDefault1" id="partyLable">
+                        {{party.partyName}}
+                    </label>
+                </div>
+                {% endfor %}
+
+                <!-- <div class="form-check" id="party2">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" style="position: absolute;
+            left: 10%;top: 30%;bottom: 0%;">
+                    <label class="form-check-label" for="flexRadioDefault2" id="partyLable">
+                        Political Party 02
+                    </label>
+                </div>
+                <div class="form-check" id="party3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" style="position: absolute;
+            left: 10%;top: 30%;bottom: 0%;">
+                    <label class="form-check-label" for="flexRadioDefault3" id="partyLable">
+                        Political Party 03
+                    </label>
+                </div>
+                <div class="form-check" id="party4">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" style="position: absolute;
+            left: 10%;top: 30%;bottom: 0%;">
+                    <label class="form-check-label" for="flexRadioDefault4" id="partyLable">
+                        Political Party 04
+                    </label>
+                </div>
+                <div class="form-check" id="party5">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" style="position: absolute;
+            left: 10%;top: 30%;bottom: 0%;">
+                    <label class="form-check-label" for="flexRadioDefault5" id="partyLable">
+                        Political Party 05
+                    </label> -->
+            </div>
+
+    </div>
+    <button id="submitButton" type="submit" class="btn btn-warning">Submit</button>
+    <button type="button" class="btn btn-outline-danger" id="cancleButton">Cancel Vote</button>
+    </form>
+    </div>
+
+
+
+
+</body>
+
+</html>

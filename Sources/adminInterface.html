@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <script>
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            window.history.pushState(null, "", window.location.href);
+        };
+    </script>
+
+    <style>
+        body {
+            background-color: #007BFF;
+        }
+
+        #containerBox {
+
+            position: absolute;
+            left: 29.32%;
+            right: 29.32%;
+            top: 10%;
+            bottom: 10%;
+
+            background: #D9D9D9;
+            border: 1px solid #BAA8A8;
+            box-shadow: 10px 9px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+
+        }
+
+        #formHeading {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            ;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 58px;
+
+            color: #000000;
+
+        }
+
+
+        #Content {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 5%;
+            bottom: 2.31%;
+
+        }
+
+        #actionButton_1 {
+
+            box-sizing: border-box;
+
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 12%;
+            bottom: 76%;
+
+            background: rgba(28, 251, 218, 0.61);
+            border: 2px solid #BAA8A8;
+            box-shadow: 5px 4px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+        }
+
+        #actionButton_1:hover {
+            transform: scale(1.1);
+            background-color: #11b89f;
+        }
+
+        #actionButton_2 {
+
+            box-sizing: border-box;
+
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 29%;
+            bottom: 59%;
+
+            background: rgba(118, 251, 28, 0.61);
+            border: 2px solid #BAA8A8;
+            box-shadow: 5px 4px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+        }
+
+        #actionButton_2:hover {
+            transform: scale(1.1);
+            background-color: #5fd610;
+        }
+
+        #actionButton_3 {
+
+            box-sizing: border-box;
+
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 46%;
+            bottom: 42%;
+
+            background: rgba(251, 214, 28, 0.96);
+            border: 2px solid #BAA8A8;
+            box-shadow: 5px 4px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+        }
+
+        #actionButton_3:hover {
+            transform: scale(1.1);
+            background-color: #ddba0d;
+        }
+
+        #actionButton_4 {
+
+            box-sizing: border-box;
+
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 63%;
+            bottom: 25%;
+
+            background: rgba(255, 47, 144, 0.949);
+            border: 2px solid #BAA8A8;
+            box-shadow: 5px 4px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+        }
+
+        #actionButton_4:hover {
+            transform: scale(1.1);
+            background-color: rgba(213, 29, 115, 0.949);
+        }
+
+        #actionButton_5 {
+
+            box-sizing: border-box;
+
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 80%;
+            bottom: 8%;
+
+            background: rgba(224, 3, 249, 0.949);
+            border: 2px solid #BAA8A8;
+            box-shadow: 5px 4px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+        }
+
+        #actionButton_5:hover {
+            transform: scale(1.1);
+            background-color: rgba(142, 15, 164, 0.949);
+        }
+
+        #Logout {
+
+            position: absolute;
+            left: 75%;
+            right: 5%;
+            top: 94%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+        Swal.fire({
+            icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% elif message.tags == 'warning' %}warning{% else %}info{% endif %}",
+            title: "{% if message.tags == 'success' %}Success!{% elif message.tags == 'error' %}Oops!{% elif message.tags == 'warning' %}Warning!{% else %}Notice{% endif %}",
+            text: "{{ message }}",
+            confirmButtonColor: "{% if message.tags == 'success' %}#28a745{% elif message.tags == 'error' %}#d33{% elif message.tags == 'warning' %}#ffc107{% else %}#3085d6{% endif %}",
+            confirmButtonText: "OK"
+        });
+        {% endfor %}
+    </script>
+    {% endif %}
+
+    <div id="containerBox">
+        <div id="Content">
+            <p id="formHeading">Admin Interface</p>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="" type="button" id="actionButton_1"
+                    onclick="location.href = '{% url 'navigate' 'generateReport' %}'"><b>Generate Report</b></button>
+                <button class="" type="button" id="actionButton_2"
+                    onclick="location.href = '{% url 'navigate' 'setOtpCount' %}'"><b>Reset OTP
+                        Count</b></button>
+                <button class="" type="button" id="actionButton_3"
+                    onclick="location.href = '{% url 'navigate' 'selectElectionName' %}'"><b>Set
+                        Election Name</b></button>
+                <button class="" type="button" id="actionButton_4"
+                    onclick="location.href = '{% url 'navigate' 'addNewParty' %}'"><b>Add New Political
+                        Party</b></button>
+                <button class="" type="button" id="actionButton_5"
+                    onclick="location.href = '{% url 'navigate' 'deletePartyPage' %}'"><b>Delete a Political
+                        Party</b></button>
+            </div>
+            <!-- <button class="btn btn-outline-danger" type="button" id="Logout" target="_blank"
+                onclick="location.href = '{% url 'navigate' 'adminLogout' %}'"><b>Logout</b></button> -->
+            <button class="btn btn-outline-danger" type="button" id="Logout"
+                onclick="window.open('{% url 'navigate' 'adminLogout' %}', '_blank')">
+                <b>Logout</b>
+            </button>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

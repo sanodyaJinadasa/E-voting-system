@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #007BFF;
+        }
+
+        #formContainer {
+
+            position: absolute;
+            left: 29.32%;
+            right: 29.32%;
+            top: 30%;
+            bottom: 30%;
+
+            background: #D9D9D9;
+            border: 1px solid #BAA8A8;
+            box-shadow: 10px 9px 7.4px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+
+        }
+
+        #formHeading {
+
+            text-align: center;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 35px;
+            line-height: 58px;
+
+            color: #000000;
+
+        }
+
+        #confirmButton {
+
+            position: absolute;
+            left: 75%;
+            right: 0%;
+
+            background: #34FF9D;
+            border: 1px solid #000000;
+            border-radius: 7px;
+
+        }
+
+        #formContent {
+            position: absolute;
+            left: 5%;
+            right: 10%;
+            top: 5%;
+            bottom: 2.31%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+        Swal.fire({
+            icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% elif message.tags == 'warning' %}warning{% else %}info{% endif %}",
+            title: "{% if message.tags == 'success' %}Success!{% elif message.tags == 'error' %}Oops!{% elif message.tags == 'warning' %}Warning!{% else %}Notice{% endif %}",
+            text: "{{ message }}",
+            confirmButtonColor: "{% if message.tags == 'success' %}#28a745{% elif message.tags == 'error' %}#d33{% elif message.tags == 'warning' %}#ffc107{% else %}#3085d6{% endif %}",
+            confirmButtonText: "OK"
+        });
+        {% endfor %}
+    </script>
+    {% endif %}
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+
+    <script>
+        function validateOtp() {
+            const otpInput = document.getElementById('OTP');
+            const otpValue = otpInput.value;
+            if (otpValue.length !== 6) {
+                alert("OTP must be exactly 6 digits!");
+                return false; // Prevent form submission
+            }
+            return true;
+        }
+
+    </script>
+
+    <div id="formContainer">
+        <form method="post" id="formContent" action="/verify_otp/"> <!-- onsubmit="return validateOtp();" -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="mb-3">
+                <p id="formHeading">OTP Verification</p>
+
+                <label class="form-label">OTP Number : </label>
+                <input type="number" class="form-control" id="OTP" placeholder="Enter your OTP with 6 digits"
+                    pattern="\d{6}" name="otp">
+
+
+            </div>
+            <button id="confirmButton" type="submit" class="btn btn-warning">Confirm</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
